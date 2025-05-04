@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+
+html, body {
+  background-color: #1e1e2f;
+  font-family: "Fira Sans", sans-serif;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 20px;
+}
+
+h2 {
+  font-family: "Press Start 2P", system-ui;
+  font-size: 80px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 60px;
+  font-weight: 400;
+}
+
+/* Button Box Style */
+.instructions, .upload {
+  background-color: white;
+  border-radius: 25px;
+  padding: 30px 40px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 240px;
+  min-height: 100px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.instructions:hover, .upload:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+
+.instructions-text, .upload-text {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1e1e2f;
+  text-align: center;
+}
+
+/* Side Images + Row */
+.horizontal-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin: 20px 0;
+}
+
+.side-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.menu-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 60px;
+  flex-wrap: wrap; /* Optional: allows it to wrap on small screens */
+}
+
+.instructions {
+  background-color: white;
+  border-radius: 25px;
+  padding: 30px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  min-height: 100px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.instructions:hover {
+  transform: scale(110%);
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
+  cursor:pointer;
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+
+}
+
+.instructions-text {
+  font-size: 20px;
+  color: #1e1e2f;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 800;
+  text-align: center;
+}
+

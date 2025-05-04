@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Title Game</title>
+  <link rel="stylesheet" href="index.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="horizontal-row">
+      <img class="side-img" src="media/penguin_guy.gif" alt="Left Icon" style="height:150px;width:150px;" />
+      <h2 style="font-size:8rem;">QUICK <br>QUIZ!</h2>
+      <img class="side-img" src="media/penguin_guy2.gif" alt="Right Icon" style="height:150px;width:150px;"/>
+    </div>
+
+    <p>EDUCATIONAL QUIZ BATTLE WITH A FRIEND!</p>
+
+    <div class="menu-buttons">
+      <div class="instructions">
+        <a href="instructions.html" style="text-decoration: none;">
+        <div class="instructions-text">INSTRUCTIONS</div>
+      </div>
+
+      <div class="instructions upload-wrapper">
+        <label for="pdfInput" class="instructions-text" style="cursor: pointer;">UPLOAD PDF</label>
+        <input type="file" id="pdfInput" accept="application/pdf" style="display: none;" />
+      </div>
+    
+    
+      <div class="instructions">
+        <a href="practice.html" style="text-decoration: none;">
+          <div class="instructions-text">PRACTICE MODE</div>
+        </a>
+      </div>
+    </div>
+      
+    
+
+    <!-- Loading Spinner -->
+    <img id="loading-spinner" src="https://i.gifer.com/ZZ5H.gif" alt="Loading..." style="display: none; margin-top: 30px; width: 80px;" />
+  </div>
+
+  <script>
+    const fileInput = document.getElementById("pdfInput");
+    const loadingSpinner = document.getElementById("loading-spinner");
+
+    fileInput.addEventListener("change", async () => {
+      const file = fileInput.files[0];
+      if (!file) return;
+
+      loadingSpinner.style.display = "block";
+
+      const reader = new FileReader();
+      reader.onload = async function () {
+        const typedArray = new Uint8Array(reader.result);
+        const pdf = await pdfjsLib.getDocument(typedArray).promise;
+
+        let textContent = '';
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const text = await page.getTextContent();
+          const pageText = text.items.map(item => item.str).join(' ');
+          textContent += `\n${pageText}`;
+        }
+
+        const res = await fetch("http://localhost:3000/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt: textContent })
+        });
+
+        const data = await res.json();
+        const reply = data.reply || JSON.stringify(data);
+        const encoded = encodeURIComponent(reply);
+        window.location.href = `game.html?data=${encoded}`;
+      };
+
+      reader.readAsArrayBuffer(file);
+    });
+  </script>
+</body>
+</html>

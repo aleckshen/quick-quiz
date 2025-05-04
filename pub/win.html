@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Victory</title>
+  <link rel="stylesheet" href="win.css" />
+</head>
+<body>
+  <div class="victory-container fade-in">
+    <h1 id="winner-text">Loading...</h1>
+    <p id="score-text">Scores:</p>
+    <div class="score-details">
+      <p>Player 1: <span id="p1-score">0</span></p>
+      <p>Player 2: <span id="p2-score">0</span></p>
+    </div>
+    <button onclick="goHome()">Play Again</button>
+  </div>
+
+  <!-- Confetti & Sound -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <audio id="celebration-sound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_c0fc2d2f07.mp3" preload="auto"></audio>
+
+  <script>
+    function goHome() {
+      window.location.href = 'index.html';
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const winner = params.get('winner') || "Unknown";
+    const p1 = params.get('p1') || 0;
+    const p2 = params.get('p2') || 0;
+
+    document.getElementById('p1-score').textContent = p1;
+    document.getElementById('p2-score').textContent = p2;
+
+    const winnerText = document.getElementById('winner-text');
+    if (winner.toLowerCase() === "draw") {
+      winnerText.textContent = "🤝 It's a Draw!";
+    } else {
+      winnerText.textContent = `🏆 ${winner} Wins! 🏆`;
+    }
+
+    // Celebration
+    confetti({
+      particleCount: 200,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+
+    document.getElementById('celebration-sound').play();
+  </script>
+</body>
+</html>
