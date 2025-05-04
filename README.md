@@ -1,47 +1,64 @@
-# string_decoder
+# Quick-Quiz
 
-***Node-core v8.9.4 string_decoder for userland***
+**EDUCATIONAL QUIZ BATTLE WITH A FRIEND!**
+
+---
+
+## Overview:
+
+**Quick-Quiz** is an interactive web application that generates Kahoot-style quizzes from any uploaded PDF using the **OpenAI ChatGPT API**.  
+Challenge a friend in real-time and see who can score the highest!
+
+Along with competitive quizzes, Quick-Quiz also features:
+- **Instructions Page**: Learn how to get started and play.
+- **Practice Page**: Use interactive flashcards to review material at your own pace.
+
+---
+
+## Key Features
+
+- **Quiz Generation from PDFs**  
+  Upload your own study materials — quizzes are automatically created for you.
+
+- **Real-Time Battle Mode**  
+  Play against a friend and earn points for correct answers.
+
+- **Interactive Flashcards**  
+  Practice and memorize key concepts using dynamic, user-friendly flashcards.
+
+- **Simple and Fun UI**  
+  Intuitive design that makes learning competitive and enjoyable.
+
+---
+
+## Screenshots
+
+![Homepage](https://i.imgur.com/McCHuJq.png)
+![Quiz Battle Mode](https://i.imgur.com/cTAQPKB.png)
+![Flashcards Practice](https://i.imgur.com/hF9Cj1b.png)
+![Instructions Page](https://i.imgur.com/ioKujiK.png)
 
 
-[![NPM](https://nodei.co/npm/string_decoder.png?downloads=true&downloadRank=true)](https://nodei.co/npm/string_decoder/)
-[![NPM](https://nodei.co/npm-dl/string_decoder.png?&months=6&height=3)](https://nodei.co/npm/string_decoder/)
 
+---
 
-```bash
-npm install --save string_decoder
-```
+## How to Use
 
-***Node-core string_decoder for userland***
+1. Upload a PDF file containing study material.
+2. Wait a few seconds for the questions to be generated.
+3. Battle a friend in real-time quizzes.
+4. Practice with flashcards if you want to study solo!
 
-This package is a mirror of the string_decoder implementation in Node-core.
+---
 
-Full documentation may be found on the [Node.js website](https://nodejs.org/dist/v8.9.4/docs/api/).
+## Contributions
 
-As of version 1.0.0 **string_decoder** uses semantic versioning.
+Feel free to fork the project, submit pull requests, or suggest features!  
+All help is appreciated to make **Quick-Quiz** even better.
 
-## Previous versions
+---
 
-Previous version numbers match the versions found in Node core, e.g. 0.10.24 matches Node 0.10.24, likewise 0.11.10 matches Node 0.11.10.
+## Powered By
 
-## Update
-
-The *build/* directory contains a build script that will scrape the source from the [nodejs/node](https://github.com/nodejs/node) repo given a specific Node version.
-
-## Streams Working Group
-
-`string_decoder` is maintained by the Streams Working Group, which
-oversees the development and maintenance of the Streams API within
-Node.js. The responsibilities of the Streams Working Group include:
-
-* Addressing stream issues on the Node.js issue tracker.
-* Authoring and editing stream documentation within the Node.js project.
-* Reviewing changes to stream subclasses within the Node.js project.
-* Redirecting changes to streams from the Node.js project to this
-  project.
-* Assisting in the implementation of stream providers within Node.js.
-* Recommending versions of `readable-stream` to be included in Node.js.
-* Messaging about the future of streams to give the community advance
-  notice of changes.
-
-See [readable-stream](https://github.com/nodejs/readable-stream) for
-more details.
+- **Modern LLM API** for quiz question generation
+- **Custom-built frontend** for interactive gameplay
