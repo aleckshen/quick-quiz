@@ -1,19 +1,15 @@
 {
-  "name": "web-streams-ponyfill",
-  "main": "../dist/ponyfill",
-  "module": "../dist/ponyfill.mjs",
-  "types": "../dist/types/ponyfill.d.ts",
-  "typesVersions": {
-    ">=3.6": {
-      "../dist/types/*": [
-        "../dist/types/ts3.6/*"
-      ]
-    }
-  },
+  "main":"server.js",
+  "scripts": {
+     "start": "node server.js"
+   },
   "dependencies": {
+    "body-parser": "^2.2.0",
     "cors": "^2.8.5",
-    "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "node-fetch": "^3.3.2"
+    "multer": "^1.4.5-lts.2",
+    "node-fetch": "^3.3.2",
+    "pdf-parse": "^1.1.1"
   }
 }
+
