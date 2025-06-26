@@ -7,17 +7,16 @@ const bodyParser = require('body-parser');
 const fetch = (...args) => import('node-fetch').then(mod => mod.default(...args));
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(express.static('pub'))
-app.use(bodyParser.json);
+app.use(bodyParser.json());
 
 const instruction = `You are an AI that generates multiple choice quiz questions in pure JSON format.
 Do not include any explanation or formatting.
 Each question should be a key, and its value must be a list of 4 answer options. All options should be one word, no multichoice answers like option 1 and option 2. Only 3 questions.
 Questions are based on the material in the PDF uploaded. Make sure the questions are relevant and there is only one correct answer.
-If a question and answer can't be relevant or correct when options are restricted to one word, don't use it.
 
 Output ONLY JSON in a format like this:
 
@@ -35,7 +34,7 @@ app.post('/api/chat', async (req, res) => {
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
-      headers: {
+      headers: {  
         'Authorization': `Bearer ${OPENAI_API_KEY}`,
         'Content-Type': 'application/json'
       },

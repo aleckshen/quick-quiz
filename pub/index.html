@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Title Game</title>
+  <title>Quick Quiz!</title>
   <link rel="stylesheet" href="index.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
@@ -48,12 +48,17 @@
 
     fileInput.addEventListener("change", async () => {
       const file = fileInput.files[0];
-      if (!file) return;
+      if (!file) {
+        console.log("No file selected");
+        return;
+      }
+      console.log("File selected:", file);
 
       loadingSpinner.style.display = "block";
 
       const reader = new FileReader();
       reader.onload = async function () {
+        console.log("File loaded, parsing PDF...");
         const typedArray = new Uint8Array(reader.result);
         const pdf = await pdfjsLib.getDocument(typedArray).promise;
 
@@ -64,13 +69,15 @@
           const pageText = text.items.map(item => item.str).join(' ');
           textContent += `\n${pageText}`;
         }
+        console.log("PDF text extracted, sending to /api/chat");
 
-        const res = await fetch("http://localhost:3000/api/chat", {
+        const res = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ prompt: textContent })
         });
 
+        console.log("Response received from /api/chat");
         const data = await res.json();
         const reply = data.reply || JSON.stringify(data);
         const encoded = encodeURIComponent(reply);
