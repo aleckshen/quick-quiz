@@ -53,7 +53,7 @@ Along with competitive quizzes, Quick-Quiz also features:
 
 ## Contributions
 
-Made by: Aleck Shen, William Tay, Leo Huynh, Amin Farah and Rick Huang.
+Made by: Aleck Shen, William Tay, Leo Huynh, Amin Farah and Rick Huang.  
 Feel free to fork the project, submit pull requests, or suggest features!  
 All help is appreciated to make **Quick-Quiz** even better.
 
