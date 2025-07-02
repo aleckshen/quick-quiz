@@ -18,7 +18,7 @@ Do not include any explanation or formatting.
 Each question should be a key, and its value must be a list of 4 answer options. All options should be one word, no multichoice answers like option 1 and option 2. Only 3 questions.
 Questions are based on the material in the PDF uploaded. Make sure the questions are relevant and there is only one correct answer.
 
-Output ONLY JSON in a format like this:
+Output ONLY JSON in this EXACT format:
 
 {
   "What is the capital of France?": ["Paris", "London", "Berlin", "Madrid"],
